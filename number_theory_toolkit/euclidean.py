@@ -1,6 +1,6 @@
-def euclidean(a, b, verbose=False):
+def euclidean_algorithm(a, b, verbose=False):
 	if a < b:
-		return euclidean(b, a, verbose)
+		return euclidean_algorithm(b, a, verbose)
 	elif b == 0:
 		if verbose:
 			print(f'gcd = {a}')
@@ -8,7 +8,7 @@ def euclidean(a, b, verbose=False):
 	else:
 		if verbose:
 			print(f'{a} = {a // b} * {b} + {a % b}')
-		return euclidean(b, a % b, verbose)
+		return euclidean_algorithm(b, a % b, verbose)
 
 
 def bezout_coefficients(a, b, verbose=False, even=False):
@@ -39,6 +39,6 @@ def bezout_coefficients(a, b, verbose=False, even=False):
 
 
 if __name__ == '__main__':
-	print(euclidean(7245, 4784, True))
+	print(euclidean_algorithm(7245, 4784, True))
 	print(bezout_coefficients(951, 456, True))
 	

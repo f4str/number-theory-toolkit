@@ -1,10 +1,10 @@
-from euclidean import euclidean, bezout_coefficients
+from .euclidean import euclidean_algorithm, bezout_coefficients
 
 
 def linear_congruence(a, b, n):
 	a, b = a % n, b % n
 	
-	d = euclidean(a, n)
+	d = euclidean_algorithm(a, n)
 	if b % d != 0:
 		return []
 	
@@ -24,7 +24,7 @@ def linear_congruence_system(a, b, n, m):
 		x = b * e + a * f
 		return x % (n * m)
 
-def chinese_remainder(a, b, n, m):
+def chinese_remainder_theorem(a, b, n, m):
 	k = linear_congruence(n, b - a, m)[0]
 	x = a + n * k
 	return x % (n * m)
@@ -39,6 +39,6 @@ if __name__ == '__main__':
 	print(linear_congruence_system(2, 3, 4, 25))
 	print(linear_congruence_system(4, 2, 15, 8))
 	
-	print(chinese_remainder(2, 3, 4, 25))
-	print(chinese_remainder(4, 2, 15, 8))
+	print(chinese_remainder_theorem(2, 3, 4, 25))
+	print(chinese_remainder_theorem(4, 2, 15, 8))
 		

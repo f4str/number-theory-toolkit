@@ -1,4 +1,4 @@
-from euclidean import bezout_coefficients
+from .euclidean import bezout_coefficients
 
 
 def encode(t, e, M):
