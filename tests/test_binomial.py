@@ -1,4 +1,4 @@
-from number_theory_toolkit.binomial import binomial_coefficient, binomial_theorem, pascal_triangle
+from number_theory_toolkit import binomial_coefficient, binomial_theorem, pascal_triangle
 
 
 def test_binomial():

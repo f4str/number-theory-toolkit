@@ -1,4 +1,4 @@
-from number_theory_toolkit.linear_congruences import (
+from number_theory_toolkit import (
     chinese_remainder_theorem,
     linear_congruence,
     linear_congruence_system,

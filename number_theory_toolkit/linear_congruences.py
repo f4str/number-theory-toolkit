@@ -1,4 +1,4 @@
-from number_theory_toolkit.euclidean import bezout_coefficients, euclidean_algorithm
+from number_theory_toolkit import bezout_coefficients, euclidean_algorithm
 
 
 def linear_congruence(a: int, b: int, n: int):
