@@ -1,7 +1,9 @@
+from typing import List
+
 from number_theory_toolkit import bezout_coefficients, euclidean_algorithm
 
 
-def linear_congruence(a: int, b: int, n: int):
+def linear_congruence(a: int, b: int, n: int) -> List[int]:
     a, b = a % n, b % n
 
     d = euclidean_algorithm(a, n)
@@ -14,7 +16,7 @@ def linear_congruence(a: int, b: int, n: int):
     return [x + i * n for i in range(d)]
 
 
-def linear_congruence_system(a: int, b: int, n: int, m: int):
+def linear_congruence_system(a: int, b: int, n: int, m: int) -> int:
     if n < m:
         return linear_congruence_system(b, a, m, n)
     else:
@@ -25,7 +27,7 @@ def linear_congruence_system(a: int, b: int, n: int, m: int):
         return x % (n * m)
 
 
-def chinese_remainder_theorem(a, b, n, m):
+def chinese_remainder_theorem(a: int, b: int, n: int, m: int) -> int:
     k = linear_congruence(n, b - a, m)[0]
     x = a + n * k
     return x % (n * m)

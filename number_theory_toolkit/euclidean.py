@@ -1,7 +1,7 @@
 from typing import Tuple
 
 
-def euclidean_algorithm(a: int, b: int, verbose: bool = False) -> int:
+def euclidean_algorithm(a: int, b: int, verbose=False) -> int:
     if a < b:
         return euclidean_algorithm(b, a, verbose)
     elif b == 0:
@@ -14,9 +14,7 @@ def euclidean_algorithm(a: int, b: int, verbose: bool = False) -> int:
         return euclidean_algorithm(b, a % b, verbose)
 
 
-def bezout_coefficients(
-    a: int, b: int, verbose: bool = False, even: bool = False
-) -> Tuple[int, int, int]:
+def bezout_coefficients(a: int, b: int, verbose=False, even=False) -> Tuple[int, int, int]:
     if a < b:
         return bezout_coefficients(b, a, verbose, not even)
     elif b == 0:

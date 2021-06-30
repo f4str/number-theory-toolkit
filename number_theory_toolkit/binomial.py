@@ -25,7 +25,7 @@ def pascal_triangle(n: int) -> List[List[int]]:
 
 
 def binomial_theorem(
-    x: Union[int, float, str], y: Union[int, float, str], n: int, trim: bool = True
+    x: Union[int, float, str], y: Union[int, float, str], n: int, trim=True
 ) -> Union[int, float, str]:
     if isinstance(x, (int, float)) and isinstance(y, (int, float)):
         total: Union[int, float] = 0
