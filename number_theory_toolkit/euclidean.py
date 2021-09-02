@@ -14,9 +14,9 @@ def euclidean_algorithm(a: int, b: int, verbose=False) -> int:
         return euclidean_algorithm(b, a % b, verbose)
 
 
-def bezout_coefficients(a: int, b: int, verbose=False, even=False) -> Tuple[int, int, int]:
+def bezout_coefficients(a: int, b: int, verbose=False, *, even=False) -> Tuple[int, int, int]:
     if a < b:
-        return bezout_coefficients(b, a, verbose, not even)
+        return bezout_coefficients(b, a, verbose, even=not even)
     elif b == 0:
         if verbose:
             print(f'gcd = {a}')
@@ -24,7 +24,7 @@ def bezout_coefficients(a: int, b: int, verbose=False, even=False) -> Tuple[int,
     else:
         q = a // b
         r = a % b
-        x, y, g = bezout_coefficients(b, r, verbose, not even)
+        x, y, g = bezout_coefficients(b, r, verbose, even=not even)
         if verbose:
             if x != 0 and y != 0:
                 if even:

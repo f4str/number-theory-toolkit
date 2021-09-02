@@ -25,35 +25,39 @@ def pascal_triangle(n: int) -> List[List[int]]:
 
 
 def binomial_theorem(
-    x: Union[int, float, str], y: Union[int, float, str], n: int, trim=True
+    x: Union[int, float, str], y: Union[int, float, str], n: int, simplify=True
 ) -> Union[int, float, str]:
-    if isinstance(x, (int, float)) and isinstance(y, (int, float)):
-        total: Union[int, float] = 0
-        for k in range(n + 1):
-            coeff = binomial_coefficient(n, k) * (x ** (n - k)) * (y ** k)
-            total += coeff
-        return total
+    if simplify and isinstance(x, (int, float)) and isinstance(y, (int, float)):
+        return (x + y) ** n
     else:
         terms: List[str] = []
         for k in range(n + 1):
-            if trim:
-                terms = []
-                comb = binomial_coefficient(n, k)
-                if comb > 1:
-                    terms.append(str(comb))
+            coefficient: float = binomial_coefficient(n, k)
+            if simplify:
+                term_list: List[str] = []
 
-                if n - k == 1:
-                    terms.append(f'{x}')
-                elif n - k > 1:
-                    terms.append(f'{x}^{n - k}')
+                if isinstance(x, (int, float)):
+                    coefficient *= x ** (n - k)
+                else:
+                    if n - k == 1:
+                        term_list.append(f'{x}')
+                    elif n - k > 1:
+                        term_list.append(f'{x}^{n - k}')
 
-                if k == 1:
-                    terms.append(f'{y}')
-                elif k > 1:
-                    terms.append(f'{y}^{k}')
+                if isinstance(y, (int, float)):
+                    coefficient *= y ** k
+                else:
+                    if k == 1:
+                        term_list.append(f'{y}')
+                    elif k > 1:
+                        term_list.append(f'{y}^{k}')
 
-                term = ' '.join(terms)
+                if coefficient > 1:
+                    term_list.insert(0, str(coefficient))
+
+                term = ' * '.join(term_list)
             else:
-                term = f'{binomial_coefficient(n, k)} {x}^{n - k} {y}^{k}'
+                term = f'{coefficient} * {x}^{n - k} * {y}^{k}'
+
             terms.append(term)
         return ' + '.join(terms)

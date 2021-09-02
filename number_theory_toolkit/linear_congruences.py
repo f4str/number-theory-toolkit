@@ -31,16 +31,3 @@ def chinese_remainder_theorem(a: int, b: int, n: int, m: int) -> int:
     k = linear_congruence(n, b - a, m)[0]
     x = a + n * k
     return x % (n * m)
-
-
-if __name__ == '__main__':
-    print(linear_congruence(2, 1, 5))
-    print(linear_congruence(2, 1, 6))
-    print(linear_congruence(7, 4, 25))
-    print(linear_congruence(15, 10, 25))
-
-    print(linear_congruence_system(2, 3, 4, 25))
-    print(linear_congruence_system(4, 2, 15, 8))
-
-    print(chinese_remainder_theorem(2, 3, 4, 25))
-    print(chinese_remainder_theorem(4, 2, 15, 8))
